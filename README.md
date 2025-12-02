@@ -8,12 +8,6 @@ This repository contains the source code for the web application, including the 
 - [Features](#features)
 - [Prerequisites](#prerequisites)
 - [Getting Started / Setup](#getting-started--setup)
-- [Database](#database)
-- [Environment & Secrets](#environment--secrets)
-- [Run Locally](#run-locally)
-- [Publish to GitHub (summary)](#publish-to-github-summary)
-- [CI / GitHub Actions](#ci--github-actions)
-
 ## Demo
 *(Optional: add a link or screenshots)*
 
