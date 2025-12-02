@@ -49,9 +49,17 @@
                 <p class="card-text">
                     <b>Genre:</b> @book.GenreName<br />
                     <b>Author:</b> @book.AuthorName<br />
-                    <b>Price:</b> @book.Price
+                    <b>Price:</b> @book.Price <br />
+                    @* <b>Quantity:</b> @book.Quantity *@
                 </p>
-                <button type="button" onclick="add(@book.Id)" class="btn btn-primary">Add To Cart</button>
+                @if(book.Quantity > 0)
+                {
+                    <button type="button" onclick="add(@book.Id)" class="btn btn-primary">Add To Cart</button>
+                }
+                else
+                {
+                    <span style="border: 0px solid;padding: 5px 8px;color: red;border-radius: 5px;">Out of stock</span>
+                }
             </div>
         </div>
     }

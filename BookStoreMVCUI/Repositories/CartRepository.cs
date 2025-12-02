@@ -129,7 +129,7 @@ namespace BookStoreMVCUI.Repositories
         }
 
 
-        public async Task<bool> CheckOut()
+        public async Task<bool> CheckOut(CheckoutModel model)
         {
             /// Logic
             /// Move Data From CartDetails to Order and OrderDetails Then Remove CartDetails 
@@ -147,16 +147,20 @@ namespace BookStoreMVCUI.Repositories
                 if (cartItems.Count() == 0)
                     throw new InvalidOperationException("Cart is Empty");
 
+                var pendingRecord = _dbContext.OrderStatuses.FirstOrDefault(os => os.StatusName == "Pending");
+                if (pendingRecord is null)
+                    throw new Exception("Order Status Does Not Have Pending Status");
+
                 var order = new Order();
                 order.UserId = userId;
                 order.CreatedDate = DateTime.UtcNow;
-                order.OrderStatusId = 1; // Pending
+                order.OrderStatusId = pendingRecord.Id; // Pending
                 // ------------------------------
-                order.Name = "None";
-                order.Address = "None";
-                order.PaymentMethod = "None";
-                order.Email = "None@gmail.com";
-                order.MobileNumber = "None";
+                order.Name = model.Name;
+                order.Address = model.Address;
+                order.PaymentMethod = model.PaymentMethod;
+                order.Email = model.Email;
+                order.MobileNumber = model.MobileNumber;
                 order.IsPaid = false;
                 // ------------------------------
                 _dbContext.Orders.Add(order);

@@ -14,7 +14,7 @@ namespace BookStoreMVCUI.Repositories
         public async Task<IEnumerable<Book>> GetBooks(string sTerm = "", int genreId = 0)
         {
 
-            var bookQuery = _dbContext.Books.AsNoTracking().Include(x => x.genre).AsQueryable();
+            var bookQuery = _dbContext.Books.AsNoTracking().Include(x => x.Stock).Include(x => x.genre).AsQueryable();
 
             if(!string.IsNullOrWhiteSpace(sTerm))
             {
@@ -33,7 +33,8 @@ namespace BookStoreMVCUI.Repositories
                 BookName = book.BookName,
                 GenreId = genreId,
                 Price = book.Price,
-                GenreName = book.genre.GenreName
+                GenreName = book.genre.GenreName,
+                Quantity = book.Stock == null ? 0 : book.Stock.Quantity
                 
             }).ToListAsync();   
 

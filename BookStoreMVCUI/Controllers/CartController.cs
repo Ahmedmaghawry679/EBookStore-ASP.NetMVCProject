@@ -45,12 +45,34 @@ namespace BookStoreMVCUI.Controllers
             return Ok(totalItemsInCart);
         }
 
-        public async Task<IActionResult> CheckOut()
+        [HttpGet]
+        public IActionResult CheckOut()
         {
-            bool isCheckedOut = await _cartRepository.CheckOut();
-            if (!isCheckedOut)
-                throw new Exception("Something Went Wrong");
-            return RedirectToAction("Index", "Home");
+            return View();
+        }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> CheckOut(CheckoutModel model)
+        {
+            if (!ModelState.IsValid)
+                return View(model); 
+            bool isCheckedOut = await _cartRepository.CheckOut(model);
+            if (!isCheckedOut) 
+                return RedirectToAction("OrderFailure");
+
+            return RedirectToAction("OrderSuccess");
+        }
+
+        public IActionResult OrderSuccess()
+        {
+            return View();
+        }
+
+        public IActionResult OrderFailure()
+        {
+            return View();
         }
     }
 }

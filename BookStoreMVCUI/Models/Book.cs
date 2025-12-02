@@ -27,10 +27,10 @@ namespace BookStoreMVCUI.Models
         [NotMapped]
         public string GenreName { get; set; }
 
-        //public Stock Stock { get; set; }
+        public Stock? Stock { get; set; }
 
-        //[NotMapped]
-        //public int Quantity { get; set; }
+        [NotMapped]
+        public int Quantity { get; set; }
 
     }
 }

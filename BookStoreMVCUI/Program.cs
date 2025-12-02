@@ -29,6 +29,8 @@ namespace BookStoreMVCUI
             builder.Services.AddControllersWithViews();
             builder.Services.AddTransient<IHomeRepository, HomeRepository>();
             builder.Services.AddTransient<ICartRepository, CartRepository>();
+            builder.Services.AddTransient<IOrderRepository, OrderRepository>();
+            builder.Services.AddTransient<IStockRepository, StockRepository>();
 
             var app = builder.Build();
 
