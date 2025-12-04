@@ -21,6 +21,10 @@
       "PackagePath": "staticwebassets\\images\\NoImage.png"
     },
     {
+      "Id": "D:\\.Net Projects\\BookStoreMVC\\BookStoreMVCUI\\wwwroot\\images\\d4e7bbc6-9cb2-406b-a340-6f9b8a0c6060.png",
+      "PackagePath": "staticwebassets\\images\\d4e7bbc6-9cb2-406b-a340-6f9b8a0c6060.png"
+    },
+    {
       "Id": "D:\\.Net Projects\\BookStoreMVC\\BookStoreMVCUI\\wwwroot\\images\\hobbit.jfif",
       "PackagePath": "staticwebassets\\images\\hobbit.jfif"
     },

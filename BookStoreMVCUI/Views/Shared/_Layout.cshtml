@@ -27,11 +27,20 @@
                     </li>
                     @if (User.IsInRole(Roles.Admin.ToString()))
                     {
-                        <li class="nav-item">
+                        @* <li class="nav-item">
                             <a class="nav-link" href="/AdminOperations/AllOrders">Orders</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/Stock/Index">Stock</a>
+                            <a class="nav-link" href="/Stock/Index">Stocks</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Genre/Index">Genres</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Book/Index">Books</a>
+                        </li> *@
+                        <li class="nav-item">
+                            <a class="nav-link" href="/AdminOperations/Dashboard">Admin Dashboard</a>
                         </li>
                     }
                     @* <li class="nav-item dropdown">

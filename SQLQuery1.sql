@@ -13,3 +13,7 @@ Select * from ShoppingCarts
 select * from CartDetails
 
 Select * from ASPNetUsers
+
+update Stocks set Quantity = 15
+
+update Books set Price = 19.99

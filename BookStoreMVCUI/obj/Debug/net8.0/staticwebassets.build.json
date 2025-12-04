@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "KUigSYGjzN/Xh8Uo4IxgpVT1SYM3SOJeAtFz/R1lCAQ=",
+  "Hash": "o6wlRgotszQa+73P1KPcvOTU00MRWc+oHVHeLG20sM4=",
   "Source": "BookStoreMVCUI",
   "BasePath": "_content/BookStoreMVCUI",
   "Mode": "Default",
@@ -1250,6 +1250,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "D:\\.Net Projects\\BookStoreMVC\\BookStoreMVCUI\\wwwroot\\images\\d4e7bbc6-9cb2-406b-a340-6f9b8a0c6060.png",
+      "SourceId": "BookStoreMVCUI",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\.Net Projects\\BookStoreMVC\\BookStoreMVCUI\\wwwroot\\",
+      "BasePath": "_content/BookStoreMVCUI",
+      "RelativePath": "images/d4e7bbc6-9cb2-406b-a340-6f9b8a0c6060.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\d4e7bbc6-9cb2-406b-a340-6f9b8a0c6060.png"
     },
     {
       "Identity": "D:\\.Net Projects\\BookStoreMVC\\BookStoreMVCUI\\wwwroot\\images\\hobbit.jfif",

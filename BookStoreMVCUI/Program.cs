@@ -1,4 +1,6 @@
 using BookStoreMVCUI.Data;
+using BookStoreMVCUI.Shared;
+using Microsoft.AspNetCore.Http.Features;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -31,6 +33,15 @@ namespace BookStoreMVCUI
             builder.Services.AddTransient<ICartRepository, CartRepository>();
             builder.Services.AddTransient<IOrderRepository, OrderRepository>();
             builder.Services.AddTransient<IStockRepository, StockRepository>();
+            builder.Services.AddTransient<IGenreRepository, GenreRepository>();
+            builder.Services.AddTransient<IFileService, FileService>();
+            builder.Services.AddTransient<IBookRepository, BookRepository>();
+
+            //builder.Services.Configure<FormOptions>(options =>
+            //{
+            //    // Set the limit to 100 MB
+            //    options.MultipartBodyLengthLimit = 104857600;
+            //});
 
             var app = builder.Build();
 

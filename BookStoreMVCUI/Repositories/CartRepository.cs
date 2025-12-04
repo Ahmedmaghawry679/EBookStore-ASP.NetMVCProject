@@ -1,9 +1,4 @@
-﻿
-using Microsoft.AspNetCore.Identity;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
-using System.Collections.Generic;
+﻿using Microsoft.AspNetCore.Identity;
 
 namespace BookStoreMVCUI.Repositories
 {
@@ -106,6 +101,9 @@ namespace BookStoreMVCUI.Repositories
             var cart = await _dbContext.ShoppingCarts
                             .Include(s => s.CartDetails)
                             .ThenInclude(cd => cd.Book)
+                            .ThenInclude(b => b.Stock)
+                            .Include(s => s.CartDetails)
+                            .ThenInclude(cd => cd.Book)
                             .ThenInclude(b => b.genre)
                             .Where(s => s.UserId == userId).FirstOrDefaultAsync();
             return cart;
@@ -149,7 +147,7 @@ namespace BookStoreMVCUI.Repositories
 
                 var pendingRecord = _dbContext.OrderStatuses.FirstOrDefault(os => os.StatusName == "Pending");
                 if (pendingRecord is null)
-                    throw new Exception("Order Status Does Not Have Pending Status");
+                    throw new InvalidOperationException("Order Status Does Not Have Pending Status");
 
                 var order = new Order();
                 order.UserId = userId;
@@ -175,8 +173,17 @@ namespace BookStoreMVCUI.Repositories
                     orderItem.UnitPrice = item.UnitPrice;   
 
                     _dbContext.OrderDetails.Add(orderItem);
+
+
+                    // Update Stock Here
+                    var stock = _dbContext.Stocks.FirstOrDefault(s => s.BookId == item.BookId);
+                    if (stock is null)
+                        throw new InvalidOperationException("Stock Is Null");
+                    if (item.Quantity > stock.Quantity)
+                        throw new InvalidOperationException($"Only {stock.Quantity} Item(s) are Available in Stock");
+                    stock.Quantity -= item.Quantity;
                 }
-                _dbContext.SaveChanges();
+                // _dbContext.SaveChanges();
 
                 _dbContext.CartDetails.RemoveRange(cartItems); 
                 _dbContext.SaveChanges();
